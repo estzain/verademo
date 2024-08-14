@@ -621,6 +621,7 @@ public class UserController {
 
 			// TODO: check if file is png first
 			try {
+				@SuppressWarnings("null")
 				String extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 				String path = imageDir + username + extension;
 
