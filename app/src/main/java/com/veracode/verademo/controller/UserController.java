@@ -53,6 +53,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+/*Veracode Customer Cleanser */
+import com.veracode.annotation.CRLFCleanser;
 /**
  * @author johnadmin
  */
@@ -231,6 +233,7 @@ public class UserController {
 
 	@RequestMapping(value = "/password-hint", method = RequestMethod.GET)
 	@ResponseBody
+	@CRLFCleanser(userComment = "Prueba de CustomCleanser")
 	public String showPasswordHint(String username) {
 		logger.info("Entering password-hint with username: " + username);
 
@@ -240,7 +243,7 @@ public class UserController {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-
+			
 			Connection connect = DriverManager.getConnection(Constants.create().getJdbcConnectionString());
 
 			String sql = "SELECT password_hint FROM users WHERE username = '" + username + "'";
